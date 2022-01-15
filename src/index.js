@@ -1,13 +1,12 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { BrowserRouter } from "react-router-dom";
-import './index.css';
-import App from './App';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./styles/index.css";
+import App from "./App";
+import axios from "axios";
+
+axios.defaults.baseURL="https://localhost:44394/api/";
 
 ReactDOM.render(
-  <BrowserRouter>
-        <App />
-    </BrowserRouter>,
-  document.getElementById('root')
+    <App />,
+  document.getElementById("root")
 );
-
