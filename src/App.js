@@ -1,10 +1,11 @@
-
+import Login from "./pages/Login";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 function App() {
   return (
     <div className="App">
-    <h3>asdasd</h3>
+    <Login></Login>
     </div>
   );
 }
