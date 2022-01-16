@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import Apartment from "./Apartment";
+import ApartmentListItem from "./ApartmentListItem";
 
 const ApartmentList=()=> {
   const [apartmentList, setApartmentList] = useState([]);
@@ -29,7 +29,7 @@ const ApartmentList=()=> {
         {apartmentList && (
           <tbody>
             {apartmentList.map((apartment) => {
-              return <Apartment key={apartment.id} apartment={apartment}></Apartment>;
+              return <ApartmentListItem key={apartment.id} apartment={apartment}></ApartmentListItem>;
             })}
           </tbody>
         )}
