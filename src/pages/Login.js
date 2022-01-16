@@ -1,18 +1,29 @@
 import axios from "axios";
 import React, { Component, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "../styles/login.css";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [redirect, setRedirect] = useState();
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log({email,password});
-    await axios.post("auth/login", {email,password})
-    .then((res) => console.log(res));
-    setEmail('');
-    setPassword('');
+    console.log({ email, password });
+
+    setEmail("");
+    setPassword("");
+    
+    let response=await axios.post("auth/login", { email, password });
+
+    if (response.data.success) {
+        localStorage.setItem('access_token',response.data.data.token);
+      return navigate("/");
+    }
+
+    console.log(redirect);
   };
 
   return (

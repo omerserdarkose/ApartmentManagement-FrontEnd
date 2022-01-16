@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
-
+import Sidebar from '../components/Sidebar'
 export class Admin extends Component {
     render() {
         return (
             <div>
-                <h1>Admin</h1>
+            <Sidebar ></Sidebar>
+            <div className="d-flex d-flex justify-content-start">asdasd</div>
             </div>
         )
     }
