@@ -8,19 +8,22 @@ import Admin from "./pages/Admin";
 import ApartmentList from "./components/ApartmentList";
 import ExpenseList from "./components/ExpenseList";
 import MessageInbox from "./components/MessageInbox";
+import User from "./pages/User";
+import NotFound from "./pages/NotFound";
 
 function App() {
   return (
     <BrowserRouter>
-       <Navbar></Navbar>
-      {/* <Routes>
-        <Route exact path="/" element={<Admin/>}></Route>
-        <Route path="/login" element={<Login/>}></Route>
-      </Routes>  */}
-      <ApartmentList></ApartmentList>
-      {/* <Login></Login> */}
-      {/* <ExpenseList></ExpenseList> */}
-      {/* <MessageInbox></MessageInbox> */}
+      <Navbar></Navbar>
+
+      <Routes>
+        <Route exact path="/" element={<Login />}></Route>
+        <Route path="/admin" element={<Admin />}>
+          <Route path="/admin/messages" element={<Login />}></Route>
+          <Route path="/admin/recipients" element={<User />}></Route>
+        </Route>
+        <Route path="*" element={<NotFound />}></Route>
+      </Routes>
     </BrowserRouter>
   );
 }

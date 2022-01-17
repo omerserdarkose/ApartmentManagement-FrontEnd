@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import "../styles/login.css";
 
 const Login = () => {
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [redirect, setRedirect] = useState();
@@ -20,7 +21,7 @@ const Login = () => {
 
     if (response.data.success) {
         localStorage.setItem('access_token',response.data.data.token);
-      return navigate("/");
+      return navigate("/admin");
     }
 
     console.log(redirect);
