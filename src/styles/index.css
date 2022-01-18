@@ -2,4 +2,20 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 500;
+}
+
+nav{
+  background-color: #5085A5;
+}
+
+tbody>tr {
+  cursor: pointer;
+}
+
+.loading{
+  width: 10px;
+  height: 10px; 
+ 
 }

@@ -28,7 +28,7 @@ const SidebarData = [
       {
         title: "Giden Mesajlar",
         path: "/admin/messages/sent",
-        icon: <AiIcons.AiOutlineInbox />,
+        icon: <RiIcons.RiSendPlaneFill />,
       },
     ],
   },

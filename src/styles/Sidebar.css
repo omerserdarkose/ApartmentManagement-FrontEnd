@@ -1,24 +1,39 @@
 .sidebar {
   height: 100vh;
-  background-color: darkslategray;
+  background-color: #5085A5;
 }
+/* #687864
+#31708E
+#5085A5
+#8FC1E3
+#F7F9FB
+#EDB5BF 
+font-family: 'Rajdhani', sans-serif;
 
+#EDC7B7
+#EEE2DC
+#BAB2B5
+#123C69
+#AC3B61
+Epic*/
 .sidebar-item {
   height: 50px;
   width: 100%;
   display: flex;
   flex-direction: row;
-  color: white;
+  color: whitesmoke;
   font-size: 1rem;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 500;
   align-items: center;
   justify-content: center;
   text-transform: uppercase;
   text-decoration: none;
+  border-bottom: 1px solid #8FC1E3 ;
 }
 
 .sidebar-item:hover{
-    background-color: turquoise;
+    background-color: #8FC1E3;
 }
 
 .sidebar-item-icon {
@@ -31,27 +46,29 @@
   flex: 60%;
 }
 
-.sidebar #active{
-    background-color: violet;
+.active{
+    background-color: #205066;
 }
 
 .sidebar-subitem {
     height: 40px;
     width: 100%;
+    background-color: #6b96af;
     padding-left: 1rem;
     display: flex;
     flex-direction: row;
     color: white;
     font-size: medium;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: 'Rajdhani', sans-serif;
     align-items: center;
     justify-content: center;
     text-transform: capitalize;
     text-decoration: none;
+    border-bottom: 1px solid #8FC1E3 ;
   }
   
   .sidebar-subitem:hover{
-      background-color: turquoise;
+      background-color: #8FC1E3;
   }
   
   .sidebar-subitem-icon {

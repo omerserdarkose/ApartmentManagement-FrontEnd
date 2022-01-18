@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import  {NavLink}  from "react-router-dom";
 
 function SubMenu({ sidebarItem }) {
   const [subnav, setSubNav] = useState(false);
@@ -9,10 +9,9 @@ function SubMenu({ sidebarItem }) {
   };
   return (
     <>
-      <Link
+      <NavLink
         to={sidebarItem.path}
         className="sidebar-item"
-        id={window.location.pathname == sidebarItem.path ? "active" : null}
       >
         <div className="sidebar-item-icon">{sidebarItem.icon}</div>
         <div className="sidebar-item-title">{sidebarItem.title}</div>
@@ -23,18 +22,18 @@ function SubMenu({ sidebarItem }) {
             ? sidebarItem.iconClosed
             : null}
         </div>
-      </Link>
+      </NavLink>
       {subnav &&
         sidebarItem.subNav.map((subItem, index) => {
           return (
-            <Link
+            <NavLink
               to={subItem.path}
               className="sidebar-subitem"
-              id={window.location.pathname == subItem.path ? "active" : null}
+              key={index}
             >
               <div className="sidebar-subitem-icon">{subItem.icon}</div>
               <div className="sidebar-subitem-title">{subItem.title}</div>
-            </Link>
+            </NavLink>
           );
         })}
     </>
