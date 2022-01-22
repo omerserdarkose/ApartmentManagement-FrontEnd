@@ -9,6 +9,7 @@ import MessageSent from "../components/MessageSent";
 import ExpenseList from "../components/ExpenseList";
 import MessageRead from "../components/MessageRead";
 import Loading from "../components/Loading";
+import MessageNew from "../components/MessageNew";
 
 const Admin = (location) => {
   return (
@@ -18,7 +19,7 @@ const Admin = (location) => {
       </div>
       <div className="col-sm-8 col-md-9 col-lg-10 p-0">
         <Routes>
-          <Route path="/messages" element={<Login />}></Route>
+          <Route path="/messages" element={<MessageNew />}></Route>
           <Route exact path="/messages/inbox" element={<MessageInbox />}></Route>
           <Route path="/messages/inbox/:id" element={<MessageRead />}></Route>
           <Route exact path="/messages/sent" element={<MessageSent />}></Route>

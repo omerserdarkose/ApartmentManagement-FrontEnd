@@ -1,10 +1,13 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { useLocation, useParams } from "react-router-dom";
+import * as TiIcons from "react-icons/ti";
+import * as MdIcons from "react-icons/md";
 
 function MessageRead(props) {
   const [message, setMessage] = useState([]);
   const [isSent, setIsSent] = useState(null);
+  const [read, setRead] = useState(true);
   let params = useParams();
   let location = useLocation();
 
@@ -14,17 +17,19 @@ function MessageRead(props) {
         setMessage(res.data?.data);
       }
     });
-    console.log(isSent);
     if (location.pathname.includes("sent")) {
       setIsSent(true);
-      console.log("sent");
-    }
+    } 
   }, []);
+
+  useEffect(() => {
+    axios.put(`/usermessages/${location.state.message.id}&status=${read}`);
+  }, [read]);
 
   return (
     <div>
       <div className="card">
-        <div className="card-header d-flex justify-content-start align-items-end">
+        <div className="card-header d-flex justify-content-between align-items-end">
           <div>
             <div className="fw-bolder fs-5 text-capitalize mb-0">
               {`Konu: ${message?.subject}`}
@@ -32,24 +37,16 @@ function MessageRead(props) {
 
             <div className="fs-5 text-secondary text-uppercase">
               {isSent
-                ? `Alıcı: (${
-                    location.state.message.toUserClaim
-                  }) ${location.state.message.toUserName}`
-                : `Gönderen: (${
-                    location.state.message.fromUserClaim
-                  }) ${location.state.message.fromUserName}`}
+                ? `Alıcı: (${location.state.message.toUserClaim}) ${location.state.message.toUserName}`
+                : `Gönderen: (${location.state.message.fromUserClaim}) ${location.state.message.fromUserName}`}
             </div>
-          </div> 
+          </div>
 
-          <div>
+          <div className="d-flex align-items-end justify-content-between">
             <div className="fst-italic d-inline-block ms-3 text-capitalize">
               {isSent
-                ? `${location.state?.message?.toUserBlock} Blok Daire ${
-                    location.state?.message?.toUserDoorNumber
-                  }`
-                : `${location.state?.message?.fromUserBlock} Blok Daire ${
-                    location.state?.message?.fromUserDoorNumber
-                  }`}
+                ? `${location.state?.message?.toUserBlock} Blok Daire ${location.state?.message?.toUserDoorNumber}`
+                : `${location.state?.message?.fromUserBlock} Blok Daire ${location.state?.message?.fromUserDoorNumber}`}
             </div>
 
             <div className="fst-italic d-inline-block ms-3">
@@ -61,6 +58,50 @@ function MessageRead(props) {
                 minute: "numeric",
                 second: "numeric",
               }).format(new Date(location.state.message.messageDate))}
+            </div>
+            <div className="d-flex fs-4 ms-4">
+              <div
+                className="me-2"
+                data-bs-toggle="tooltip"
+                data-bs-placement="bottom"
+                title="Yanıtla"
+              >
+                <TiIcons.TiArrowBack />
+              </div>
+              {!isSent &&
+                (read ? (
+                  <div
+                    className="me-2"
+                    data-bs-toggle="tooltip"
+                    data-bs-placement="bottom"
+                    title="Okunmadı Olarak İşaretle"
+                    onClick={() => {
+                      setRead(!read);
+                    }}
+                  >
+                    <MdIcons.MdMarkAsUnread />
+                  </div>
+                ) : (
+                  <div
+                    className="me-2"
+                    data-bs-toggle="tooltip"
+                    data-bs-placement="bottom"
+                    title="Okundu Olarak İşaretle"
+                    onClick={() => {
+                      setRead(!read);
+                    }}
+                  >
+                    <MdIcons.MdMarkEmailRead />
+                  </div>
+                ))}
+              <div
+                className="me-2"
+                data-bs-toggle="tooltip"
+                data-bs-placement="bottom"
+                title="Sil"
+              >
+                <MdIcons.MdDelete />
+              </div>
             </div>
           </div>
         </div>

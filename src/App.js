@@ -13,6 +13,7 @@ import NotFound from "./pages/NotFound";
 import MessageSent from "./components/MessageSent";
 import MessageRead from "./components/MessageRead";
 import Loading from "./components/Loading";
+import MessageNew from "./components/MessageNew";
 
 function App() {
   return (
@@ -21,7 +22,7 @@ function App() {
       <Routes>
         <Route exact path="/" element={<Login />}></Route>
         <Route path="/admin" element={<Admin />}>
-          <Route path="/admin/messages" element={<Login />}></Route>
+          <Route path="/admin/messages" element={<MessageNew />}></Route>
           <Route exact path="/admin/messages/inbox" element={<MessageInbox />} ></Route>
           <Route path="/admin/messages/inbox/:id" element={<MessageRead />} ></Route>
           <Route exact path="/admin/messages/sent" element={<MessageSent />}></Route>

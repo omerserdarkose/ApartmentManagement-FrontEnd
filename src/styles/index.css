@@ -2,8 +2,12 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Rajdhani', sans-serif;
-  font-weight: 500;
+
+
+}
+body{
+  overflow-x: hidden;
+  font-family: 'Rajdhani', sans-serif; 
 }
 
 nav{
@@ -18,4 +22,15 @@ tbody>tr {
   width: 10px;
   height: 10px; 
  
+}
+
+.old-message{
+  background-color: rgba(238, 238, 238, 0.6);
+  font-weight: 400!important;
+  font-size: medium;
+}
+
+.new-message{
+  background-color: rgb(218, 217, 217);
+  font-weight: 300!important;
 }

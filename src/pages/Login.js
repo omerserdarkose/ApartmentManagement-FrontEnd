@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { Component, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../styles/login.css";
 // u@U*#A47vz
 // %yj79d#8FA
@@ -30,34 +30,34 @@ const Login = () => {
   return (
     <div className="login ">
         <form className="login-wrapper shadow p-3 mb-5 bg-white rounded" onSubmit={handleSubmit}>
-          <h3>Log In</h3>
+          <h3>Kullanıcı Girişi</h3>
           <div className="form-group">
-            <label>Email address</label>
+            <label htmlFor="email">Email</label>
             <input
               type="email"
               value={email}
               className="form-control"
-              placeholder="Enter email"
+              id="email"
               onChange={(e) => setEmail(e.target.value)}
             />
           </div>
 
           <div className="form-group">
-            <label>Password</label>
+            <label htmlFor="password">Şifre</label>
             <input
               type="password"
               value={password}
               className="form-control"
-              placeholder="Enter password"
+              id="password"
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
 
           <button type="submit" className="btn btn-primary btn-block my-3">
-            Submit
+            Giriş
           </button>
           <p className="forgot-password text-right">
-            Forgot <a href="#">password?</a>
+            <Link to="#">Şifremi Unuttum </Link>
           </p>
         </form>
     </div>
