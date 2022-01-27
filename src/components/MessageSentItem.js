@@ -9,6 +9,7 @@ const MessageSentItem = ({ message }) => {
           message:message
         } });
     }
+
   return (
     <tr onClick={openMessage}>
       <td>
@@ -20,7 +21,7 @@ const MessageSentItem = ({ message }) => {
       </td>
       <td className="text-capitalize">({message.toUserClaim}) {message.toUserName.toUpperCase()}-{message.toUserBlock.toUpperCase()}/{message.toUserDoorNumber}</td>
       <td className="text-capitalize">{message.messageSubject}</td>
-      <td className={message.isRead?null:"text-danger"}>{message.isRead?"evet":"HAYIR"}</td>
+      <td className={(!message.isNew)?null:"text-danger"}>{(!message.isNew)?"evet":"HAYIR"}</td>
     </tr>
   );
 };

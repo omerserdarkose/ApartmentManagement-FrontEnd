@@ -21,6 +21,11 @@ const SidebarData = [
     iconOpened: <RiIcons.RiArrowUpSLine />,
     subNav: [
       {
+        title: "Yeni Mesaj",
+        path: "/admin/messages/new",
+        icon: <RiIcons.RiMailAddLine />,
+      },
+      {
         title: "Gelen Mesajlar",
         path: "/admin/messages/inbox",
         icon: <AiIcons.AiOutlineInbox />,

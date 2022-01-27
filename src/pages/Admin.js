@@ -19,7 +19,8 @@ const Admin = (location) => {
       </div>
       <div className="col-sm-8 col-md-9 col-lg-10 p-0">
         <Routes>
-          <Route path="/messages" element={<MessageNew />}></Route>
+          <Route exact path="/messages" element={<MessageNew />}></Route>
+          <Route exact path="/messages/new" element={<MessageNew />}></Route>
           <Route exact path="/messages/inbox" element={<MessageInbox />}></Route>
           <Route path="/messages/inbox/:id" element={<MessageRead />}></Route>
           <Route exact path="/messages/sent" element={<MessageSent />}></Route>

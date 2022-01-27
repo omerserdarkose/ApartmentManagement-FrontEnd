@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
-import { useLocation, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import * as TiIcons from "react-icons/ti";
 import * as MdIcons from "react-icons/md";
 
@@ -8,6 +8,7 @@ function MessageRead(props) {
   const [message, setMessage] = useState([]);
   const [isSent, setIsSent] = useState(null);
   const [read, setRead] = useState(true);
+  const navigate = useNavigate();
   let params = useParams();
   let location = useLocation();
 
@@ -19,12 +20,22 @@ function MessageRead(props) {
     });
     if (location.pathname.includes("sent")) {
       setIsSent(true);
-    } 
+    } else {
+      setIsSent(false);
+    }
+    console.log(location);
   }, []);
 
   useEffect(() => {
     axios.put(`/usermessages/${location.state.message.id}&status=${read}`);
   }, [read]);
+
+  const messageDelete = () => {
+    axios.delete(
+      `/usermessages/${location.state.message.id}&isSender=${isSent}`
+    );
+    navigate(`/admin/messages/${isSent ? "sent" : "inbox"}`);
+  };
 
   return (
     <div>
@@ -65,6 +76,9 @@ function MessageRead(props) {
                 data-bs-toggle="tooltip"
                 data-bs-placement="bottom"
                 title="Yanıtla"
+                onClick={() => {
+                  navigate(`/admin/messages/new`,{state:{message:location.state.message,subject:message.subject,messageText:message.messageText}});
+                }}
               >
                 <TiIcons.TiArrowBack />
               </div>
@@ -99,6 +113,7 @@ function MessageRead(props) {
                 data-bs-toggle="tooltip"
                 data-bs-placement="bottom"
                 title="Sil"
+                onClick={messageDelete}
               >
                 <MdIcons.MdDelete />
               </div>
